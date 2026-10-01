@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UBP OTT Improvement Check List</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#e9ebee;--card:#fff;--ink:#1c1c1e;--mut:#6b7280;--line:#d6d9de;--red:#e4002b;--soft:#fff0f2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e10;--card:#1c1c20;--ink:#f4f4f5;--mut:#9ca3af;--line:#35353c;--soft:#2b1519}}
+:root[data-theme="dark"]{--bg:#0e0e10;--card:#1c1c20;--ink:#f4f4f5;--mut:#9ca3af;--line:#35353c;--soft:#2b1519}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:12px}
+#sheet{max-width:520px;margin:0 auto;background:var(--card)}
+header{background:var(--red);color:#fff;padding:8px 10px;display:flex;align-items:center;gap:8px}
+.logo{font-weight:800;font-size:16px;letter-spacing:-.4px;background:#fff;color:var(--red);border-radius:999px;padding:2px 10px}
+header h1{font-size:12px;margin:0;font-weight:700;line-height:1.2}
+.info{display:grid;grid-template-columns:1.1fr .8fr 1.1fr;gap:6px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.info input{font-weight:800;font-size:14px}
+.info label{display:block;font-size:9px;font-weight:700;color:var(--mut)}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:2px 3px;min-width:0}
+input:focus,textarea:focus{outline:0;background:var(--soft)}
+.bar{background:var(--red);color:#fff;font-weight:800;font-size:10px;letter-spacing:.12em;padding:3px 8px}
+.bar.d{background:#2b2b2e}
+.sec{display:grid;grid-template-columns:1.3fr 1fr}
+.c{display:grid;grid-auto-rows:30px}
+.c+.c{border-left:1px solid var(--line)}
+.cell{display:grid;align-items:center;border-bottom:1px solid var(--line);padding:0 6px;gap:4px}
+.cl{grid-template-columns:1fr 54px}
+.cl span{font-weight:700;font-size:10.5px;line-height:1.05;cursor:pointer}
+.cl input{text-align:center;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--red)}
+.cr{grid-template-columns:50px 1fr}
+.cr span{font-weight:700;font-size:10.5px;color:var(--red)}
+.cr input{font-weight:700;font-size:14px}
+.hd{display:block;background:var(--red);color:#fff;font-weight:800;font-size:11px;letter-spacing:.12em;line-height:30px;text-align:center}.hd.d{background:#2b2b2e}
+.of{grid-template-columns:96px 1fr}.of span{font-weight:700;font-size:10px;line-height:1.05;color:var(--red)}.of input{font-size:14px;font-weight:700}
+.cl input.hl,.cl input.hl:focus{background:linear-gradient(176deg,transparent 10%,#fff200 10%,#ffe600 88%,transparent 88%);color:#111;border-bottom-color:transparent;border-radius:3px;box-shadow:0 0 0 1px rgba(255,230,0,.35)}.cl input.hl::placeholder{color:#8a7f00}
+.dl{border-left:2px solid var(--red);border-right:2px solid var(--red);background:var(--soft)}.dl.dt{border-top:2px solid var(--red)}.dl.db{border-bottom:2px solid var(--red)}
+.cr.fd{border:2px solid var(--red);background:var(--soft)}.cr.fd span{font-size:12px}
+.sp{grid-row:span 3;grid-template-columns:1fr;align-content:start;padding-top:3px}
+.sp span{font-weight:700;font-size:10.5px;color:var(--red)}
+.sp textarea{border:1px solid var(--line);height:62px;resize:none;font-weight:700;font-size:13px;line-height:1.3}
+.sum{grid-row:span 2;grid-template-columns:1fr 1fr;gap:4px;background:var(--soft);text-align:center;padding:4px;align-content:center}
+.sum b{display:block;font-size:20px;color:var(--red);line-height:1.1}
+.sum small{font-size:8.5px;color:var(--mut);line-height:1.1;display:block}
+.rm{padding:4px 8px}.rm span{font-size:9px;font-weight:700;color:var(--mut)}
+.rm textarea{border:1px solid var(--line);height:44px;resize:none;width:100%}
+.ff{display:flex;align-items:center;gap:8px}.ff span{white-space:nowrap}.ff input{flex:1;font-size:15px;font-weight:700}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:2px}.zones label{display:block;font-size:10px;font-weight:700;color:var(--red)}.zones input{font-size:15px;font-weight:700}
+.hist{max-width:520px;margin:0 auto;padding:0 8px 12px}.hist .h{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 10px;margin-bottom:6px;font-size:12px}.hist .h span{flex:1;font-weight:600;cursor:pointer}.hist .h b{color:var(--red);padding:2px 8px;cursor:pointer}.hist em{display:block;text-align:center;color:var(--mut);font-style:normal;font-size:12px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#111;color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}#toast.on{opacity:1}
+.tools{display:flex;gap:8px;padding:8px;max-width:520px;margin:0 auto}
+.tools button{flex:1;padding:11px 4px;border:0;border-radius:10px;font:inherit;font-weight:700;font-size:13px;background:var(--red);color:#fff}
+.tools button.s{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.hint{text-align:center;color:var(--mut);font-size:10px;padding:0 8px 6px}
+body.snap .tools,body.snap .hint,body.snap .hist{display:none}
+body.snap{background:var(--card)}
+@media print{.tools,.hint{display:none}}
+</style>
+</head>
+<body>
+<div id="sheet">
+<header><span class="logo">airasia</span><h1>UBP OTT IMPROVEMENT CHECK LIST</h1></header>
+<div class="info">
+<div><label>DATE</label><input type="date" data-k="date"></div>
+<div><label>HS-</label><input data-k="hs" autocapitalize="characters"></div>
+<div><label>CPT / CREW</label><input data-k="crew"></div>
+</div>
+<div class="sec"><div class="c" id="L"></div><div class="c" id="R"></div></div>
+</div>
+<div class="hint">แตะชื่อหัวข้อ = ใส่เวลาปัจจุบัน • พิมพ์ตัวเลข 4 หลัก เช่น 1435</div>
+<div class="tools"><button class="s" id="reset">🗑 ล้างข้อมูล</button><button class="s" id="histBtn">ประวัติ</button><button class="s" id="snap">แคปภาพ</button><button id="saveBtn">💾 บันทึก</button></div>
+<div class="hist" id="hist" hidden></div><div id="toast"></div>
+<script>
+const ARR=["LANDING","ON CHOCK","STEP TO A/C","A/C DOOR OPEN","FIRST PAX FROM A/C","LAST PAX FROM A/C","FIGURE RECEIVED","GS AUTO BOARD","PERMIT FOR BOARDING","LAST PAX AT GATE"];
+const DEP=["LAST PAX AT A/C","RAMP START LOADING","RAMP LOADING COMPLETED","A/C DOOR CLOSED","OFF CHOCK","TAKE OFF"];
+const PAX=[["FD","FD"],["TOB","TOB"],["A","A-"],["C","C-"],["INF","INF-"],["BAG","BAG"],["CARGO","CARGO"]];
+let data={};
+try{data=JSON.parse(localStorage.getItem("ott")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("ott",JSON.stringify(data))}catch(e){}};
+const id=s=>s.replace(/\W+/g,"_");
+const $=x=>document.getElementById(x);
+function fill(){
+  const row=(p,x)=>`<div class="cell cl"><span data-now="${p+id(x)}">${x}</span><input ${/^(ON|OFF) CHOCK$/.test(x)?'class="hl"':''} inputmode="numeric" maxlength="5" placeholder="--:--" data-k="${p+id(x)}" data-t="1"></div>`;
+  $("L").innerHTML=ARR.map(x=>row("a_",x)).join("")+DEP.map(x=>row("d_",x)).join("")+
+   `<div class="cell of dl dt"><span>Delay Code :</span><input data-k="delay_code"></div>`+
+   `<div class="cell of dl"><span>Minute Delay :</span><input data-k="delay_min"></div>`+
+   `<div class="cell of dl db"><span>Turn Around Time :</span><input id="tat" data-k="tat" placeholder="อัตโนมัติ"></div>`+
+   `<div class="cell of"><span>OFF LOAD PAX / FINAL FIGURE :</span><input data-k="final_fig"></div>`+
+   [1,2,3].map(n=>`<div class="cell of"><span>Zone ${n} :</span><input data-k="off_z${n}"></div>`).join("");
+  $("R").innerHTML=[["a_","ARRIVAL",""],["d_","DEPARTURE"," d"]].map(([p,t,c])=>
+   `<div class="cell hd${c}">${t}</div>`+
+   PAX.map(([k,l])=>`<div class="cell cr${k=="FD"?" fd":""}"><span>${l}</span><input data-k="${p}_${k}"></div>`).join("")+`<div class="cell sp" ${p=="d_"?'style="grid-row:span 4"':''}><span>SPECIAL</span><textarea ${p=="d_"?'style="height:92px"':''} data-k="${p}_SPECIAL"></textarea></div>`).join("");
+}
+fill();
+const mins=v=>{if(!v||v.length<5)return null;const[a,b]=v.split(":");return +a*60+ +b};
+function calc(){
+  if(data.tat_man)return;
+  const a=mins(data["a_"+id("ON CHOCK")]),b=mins(data["d_"+id("OFF CHOCK")]),t=$("tat");
+  let r="";if(a!=null&&b!=null){r=b-a;if(r<0)r+=1440}
+  t.value=r;data.tat=String(r);save();
+}
+$("tat").addEventListener("input",()=>{data.tat_man=$("tat").value?1:0},true);
+function fmt(v){v=v.replace(/\D/g,"").slice(0,4);return v.length>2?v.slice(0,2)+":"+v.slice(2):v}
+document.querySelectorAll("[data-k]").forEach(i=>{
+  if(data[i.dataset.k]!=null)i.value=data[i.dataset.k];
+  i.addEventListener("input",()=>{if(i.dataset.t)i.value=fmt(i.value);data[i.dataset.k]=i.value;save();calc()});
+});
+document.querySelectorAll("[data-now]").forEach(b=>b.addEventListener("click",()=>{
+  const i=document.querySelector(`[data-k="${b.dataset.now}"]`),n=new Date();
+  i.value=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");
+  i.dispatchEvent(new Event("input"));
+}));
+$("snap").onclick=()=>{document.body.classList.add("snap");window.scrollTo(0,0);setTimeout(()=>document.body.addEventListener("click",()=>document.body.classList.remove("snap"),{once:true}),0)};
+let recs=[],cur=null;
+try{recs=JSON.parse(localStorage.getItem("ott_recs")||"[]")}catch(e){}
+const toast=t=>{const e=$("toast");e.textContent=t;e.className="on";setTimeout(()=>e.className="",1600)};
+const apply=()=>{document.querySelectorAll("[data-k]").forEach(i=>i.value=data[i.dataset.k]||"");calc()};
+function renderHist(){
+  $("hist").innerHTML=recs.length?recs.slice().reverse().map(r=>`<div class="h"><span data-load="${r.id}">${r.d.date||"–"} • ${r.d.hs||"–"} • ${r.d.crew||""}</span><b data-del="${r.id}">✕</b></div>`).join(""):"<em>ยังไม่มีข้อมูลที่บันทึก</em>";
+  $("hist").querySelectorAll("[data-load]").forEach(e=>e.onclick=()=>{const r=recs.find(x=>x.id==e.dataset.load);data={...r.d};cur=r.id;save();apply();toast("เปิดข้อมูลแล้ว");window.scrollTo(0,0)});
+  $("hist").querySelectorAll("[data-del]").forEach(e=>e.onclick=()=>{if(!e.dataset.arm){e.dataset.arm=1;e.textContent="ลบ?";return}recs=recs.filter(x=>x.id!=e.dataset.del);if(cur==e.dataset.del)cur=null;persist();renderHist()});
+}
+function persist(){try{localStorage.setItem("ott_recs",JSON.stringify(recs));return true}catch(e){return false}}
+$("saveBtn").onclick=()=>{
+  const r=recs.find(x=>x.id==cur);
+  if(r){r.d={...data};r.at=Date.now()}else{cur=Date.now();recs.push({id:cur,at:cur,d:{...data}})}
+  toast(persist()?"บันทึกแล้ว ✓":"บันทึกไม่สำเร็จ");renderHist();
+};
+$("histBtn").onclick=()=>{const h=$("hist");h.hidden=!h.hidden;if(!h.hidden){renderHist();h.scrollIntoView({behavior:"smooth"})}};
+let armT;
+$("reset").onclick=()=>{
+  const b=$("reset");
+  if(!b.dataset.arm){b.dataset.arm=1;b.textContent="แตะอีกครั้งเพื่อล้าง";b.style.cssText="background:var(--red);color:#fff";
+    armT=setTimeout(()=>{delete b.dataset.arm;b.textContent="🗑 ล้างข้อมูล";b.style.cssText=""},3000);return}
+  clearTimeout(armT);delete b.dataset.arm;b.textContent="🗑 ล้างข้อมูล";b.style.cssText="";
+  data={};cur=null;save();apply();toast("ล้างข้อมูลแล้ว");window.scrollTo(0,0);
+};
+calc();
+</script>
+</body>
+</html>
